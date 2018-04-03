@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_peristatika"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Περιστατικά" />
+        <item
+            android:id="@+id/nav_new_report"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Εγγραφή Περιστατικού" />
+        <item
+            android:id="@+id/nav_synergia"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Συνεργία" />
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Εργαλεία" />
+    </group>
+
+    <item android:title="Βοηθήματα">
+        <menu>
+            <item
+                android:id="@+id/nav_location"
+                android:icon="@drawable/ic_location_on_black_24dp"
+                android:title="Ο χάρτης μου" />
+            <item
+                android:id="@+id/nav_webpage"
+                android:icon="@drawable/ic_web_black_24dp"
+                android:title="Η σελίδας μας" />
+        </menu>
+    </item>
+
+</menu>

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Water Board Limassol</string>
+    <string name="title_activity_nav_dra">NavDraActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_info">Πληροφορίες</string>
+    <string name="title_activity_customer">CustomerActivity</string>
+    <string name="title_activity_customer_register">CustomerRegisterActivity</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_synergia">SynergiaActivity</string>
+    <string name="title_activity_report">ReportActivity</string>
+    <string name="title_activity_report_register">ReportRegisterActivity</string>
+    <string name="title_activity_modification">ModificationActivity</string>
+    <string name="title_activity_report_update">ReportUpdateActivity</string>
+</resources>

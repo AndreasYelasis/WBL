@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".ReportActivity"
+    tools:showIn="@layout/activity_report"
+    xmlns:card_view="http://schemas.android.com/tools">
+
+    <EditText
+        android:id="@+id/editTextIdSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="Αριθμος Αναφοράς" />
+
+    <Button
+        android:id="@+id/buttonReportSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/editTextIdSearch"
+        android:text="Αναζητηση"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/buttonUncompletedReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ατέλιωτα Περιστατικά"
+        android:layout_above="@+id/recyclerview"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/buttonShowReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="εμφανιση ολων"
+        android:layout_below="@+id/buttonReportSearch"
+        android:layout_alignLeft="@+id/buttonReportSearch"
+        android:layout_alignStart="@+id/buttonReportSearch"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardUseCompatPadding="true"
+        card_view:cardElevation="5dp"
+        card_view:cardCornerRadius="5dp"
+        android:scrollbars="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/buttonShowReport" />
+</RelativeLayout>
