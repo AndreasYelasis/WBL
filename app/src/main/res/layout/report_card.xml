@@ -16,81 +16,101 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp">
+            android:layout_height="300dp">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_alignParentTop="true"
+                android:adjustViewBounds="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:scaleType="centerCrop"
+                android:layout_above="@+id/reportcustomername" />
 
             <TextView
-                android:id="@+id/cardreportID"
-                android:hint="ID  "
-                android:layout_width="100dp"
+                android:id="@+id/reportcustomername"
+                android:hint="Customer Name  "
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
-                android:paddingTop="5dp"
                 android:textColor="@color/cardview_dark_background"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="normal"
-                android:typeface="sans" />
+                android:typeface="sans"
+                android:layout_above="@+id/reportarea"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
             <TextView
                 android:id="@+id/reportarea"
                 android:hint="Area  "
-                android:layout_width="100dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
-                android:paddingTop="5dp"
                 android:textColor="@color/cardview_dark_background"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="normal"
                 android:typeface="sans"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/cardreportID"
-                android:layout_toEndOf="@+id/cardreportID" />
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
             <TextView
                 android:id="@+id/reportaddress"
                 android:hint="Address  "
-                android:layout_width="100dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
-                android:paddingTop="5dp"
                 android:textColor="@color/cardview_dark_background"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="normal"
                 android:typeface="sans"
-                android:layout_alignParentTop="true"
-                android:layout_alignBottom="@+id/reportarea"
-                android:layout_toEndOf="@+id/reportarea"
-                android:layout_toRightOf="@+id/reportarea"/>
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@+id/reportarea"
+                android:layout_toEndOf="@+id/reportarea" />
 
+            <TextView
+                android:id="@+id/taken_timestamp"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:hint="Timestamp"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                android:typeface="sans"
+                android:layout_alignBaseline="@+id/reportcustomername"
+                android:layout_alignBottom="@+id/reportcustomername"
+                android:layout_toRightOf="@+id/reportcustomername"
+                android:layout_toEndOf="@+id/reportcustomername" />
 
             <TextView
                 android:id="@+id/textViewOptions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
                 android:paddingRight="15dp"
                 android:paddingTop="10dp"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:text="&#8942;"
-                android:textAppearance="?android:textAppearanceLarge" />
+                android:textAppearance="?android:textAppearanceLarge"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
 
             <TextView
-                android:id="@+id/reportcustomername"
+                android:id="@+id/reportID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textSize="14sp"
-                android:textStyle="normal"
-                android:typeface="sans"
-                android:layout_below="@+id/textViewOptions"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_toStartOf="@+id/reportaddress"
-                android:layout_toLeftOf="@+id/reportaddress" />
-
+                android:layout_alignParentBottom="true"
+                android:layout_toEndOf="@+id/reportaddress"
+                android:layout_toRightOf="@+id/reportaddress"
+                android:text="TextView" />
 
         </RelativeLayout>
 

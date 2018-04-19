@@ -31,24 +31,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".CustomerActivity"
-            android:label="@string/title_activity_customer"
-            android:parentActivityName=".NavDraActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.andreas.wbl.NavDraActivity" />
-        </activity>
-        <activity
-            android:name=".CustomerRegisterActivity"
-            android:label="@string/title_activity_customer_register"
-            android:parentActivityName=".CustomerActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.andreas.wbl.CustomerActivity" />
-        </activity>
         <activity android:name=".InfoActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

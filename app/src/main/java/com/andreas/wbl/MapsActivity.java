@@ -1,6 +1,7 @@
 package com.andreas.wbl;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -10,6 +11,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -39,20 +41,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapSearch(View view) {
         EditText locationSearch = (EditText) findViewById(R.id.editText);
         String location = locationSearch.getText().toString();
-        //String location="Limassol, Anexartisias 6";
+        //location="Limassol, Anexartisias 6";
         List<Address> addressList = null;
-
+        Intent mapIntent = getIntent();
+        location = mapIntent.getStringExtra("odos");
+        locationSearch.setText(mapIntent.getStringExtra("odos"));
         if (location != null || !location.equals("")) {
             Geocoder geocoder = new Geocoder(this);
             try {
-                addressList = geocoder.getFromLocationName(location, 1);
+                addressList = geocoder.getFromLocationName(location, 2);
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
             Address address = addressList.get(0);
             LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-            mMap.addMarker(new MarkerOptions().position(latLng).title("Marker"));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+            mMap.addMarker(new MarkerOptions().position(latLng).title("Εδώ"));
             mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
         }
     }
@@ -60,13 +65,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        // Add a marker in Sydney and move the camera
+        // Add a marker in Symvoulio Ydatopromithias Lemesou and move the camera
         LatLng wbl = new LatLng(34.6688003, 33.0263837);
         mMap.addMarker(new MarkerOptions().position(wbl).title("Συμβούλιο Υδατοπρομήθειας Λεμεσού"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(wbl, 15));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(wbl));
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
         mMap.setMyLocationEnabled(true);
     }
+
 }

@@ -1,7 +1,6 @@
 package com.andreas.wbl;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,7 +8,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -82,7 +80,7 @@ public class SynergiasAdapter extends RecyclerView.Adapter<SynergiasAdapter.View
     private void showPopupMenu(View view, int poaition) {
         PopupMenu popup = new PopupMenu(context, view);
         MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.menu_context, popup.getMenu());
+        inflater.inflate(R.menu.menu_report, popup.getMenu());
         popup.setOnMenuItemClickListener(new MenuClickListener(poaition));
         popup.show();
     }
@@ -99,14 +97,14 @@ public class SynergiasAdapter extends RecyclerView.Adapter<SynergiasAdapter.View
         @Override
         public boolean onMenuItemClick(MenuItem menuItem) {
             switch (menuItem.getItemId()) {
-                case R.id.action_history:
+                case R.id.action_complete:
                     Toast.makeText(context, synergias.get(pos).getSynergiaName()+" history", Toast.LENGTH_SHORT).show();
                     return true;
-                case R.id.action_update:
+                case R.id.action_showall:
                     Toast.makeText(context, synergias.get(pos).getSynergiaName()+" update", Toast.LENGTH_SHORT).show();
 //                    updateRegistry();
                     return true;
-                case R.id.action_delete:
+                case R.id.action_map:
                     Toast.makeText(context, "Delete "+synergias.get(pos).getSynergiaName(), Toast.LENGTH_SHORT).show();
                     return true;
                 default:
