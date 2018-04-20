@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
+
         <TextView
             android:paddingStart="10dp"
             android:id="@+id/textView1"
@@ -35,6 +36,174 @@
             android:layout_below="@+id/textView1"
             android:ems="10"
             android:inputType="number" />
+
+        <TextView
+            android:paddingStart="10dp"
+            android:id="@+id/textViewArea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text="Περιοχή"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="4dp" />
+
+        <EditText
+            android:id="@+id/editTextReportArea"
+            android:hint="πχ 1234"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textViewArea"
+            android:ems="10"
+            android:inputType="text" />
+
+        <TextView
+            android:paddingStart="10dp"
+            android:id="@+id/textViewOdos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text="Οδός"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="4dp" />
+
+        <EditText
+            android:id="@+id/editTextReportOdos"
+            android:hint="πχ 1234"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textViewOdos"
+            android:ems="10"
+            android:inputType="text" />
+
+        <TextView
+            android:paddingStart="10dp"
+            android:id="@+id/textViewZipCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text="Ταχυδρομικός Κώδικας"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="4dp" />
+
+        <EditText
+            android:id="@+id/editTextReportZipCode"
+            android:hint="πχ 1234"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textViewZipCode"
+            android:ems="10"
+            android:inputType="number" />
+
+        <TextView
+            android:paddingStart="10dp"
+            android:id="@+id/textViewReportCustomerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text="Ονομα πελάτη"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="4dp" />
+
+        <EditText
+            android:id="@+id/editTextReportCustomerName"
+            android:hint="πχ 1234"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textViewReportCustomerName"
+            android:ems="10"
+            android:inputType="text" />
+
+        <TextView
+            android:paddingStart="10dp"
+            android:id="@+id/textViewTimeStampTaken"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text="Χρόνος παραπόνου"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="4dp" />
+
+        <EditText
+            android:id="@+id/editTextReportTimeStampTaken"
+            android:hint="πχ 1234"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textViewReportTimeStampTaken"
+            android:ems="10"
+            android:inputType="text" />
+
+        <TextView
+        android:paddingStart="10dp"
+        android:id="@+id/textViewReportPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:text="Τηλέφωνο"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="4dp" />
+
+        <EditText
+            android:id="@+id/editTextReportPhone"
+            android:hint="πχ 1234"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textViewReportPhone"
+            android:ems="10"
+            android:inputType="text" />
+
+        <TextView
+            android:paddingStart="10dp"
+            android:id="@+id/textViewReportSynergio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text="Τηλέφωνο"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="4dp" />
+
+        <EditText
+            android:id="@+id/editTextReportSynergio"
+            android:hint="πχ 1234"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textSynergio"
+            android:ems="10"
+            android:inputType="text" />
 
         <TextView
             android:paddingStart="10dp"

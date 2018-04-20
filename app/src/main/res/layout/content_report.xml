@@ -18,7 +18,7 @@
         android:layout_alignParentTop="true"
         android:ems="10"
         android:inputType="number"
-        android:hint="Αριθμος Αναφοράς" />
+        android:hint="Αριθμος Αναφοράς"> <requestFocus /></EditText>
 
     <Button
         android:id="@+id/buttonReportSearch"

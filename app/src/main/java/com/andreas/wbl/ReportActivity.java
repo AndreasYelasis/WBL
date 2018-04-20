@@ -155,8 +155,6 @@ public class ReportActivity extends AppCompatActivity {
 
                         ReportActivity.this.reports.add(report);
                     }
-
-
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (JSONException e) {
@@ -178,6 +176,7 @@ public class ReportActivity extends AppCompatActivity {
         AsyncTask<Integer, Void, Void> asyncTask = new AsyncTask<Integer, Void, Void>() {
             EditText id_search = (EditText)findViewById(R.id.editTextIdSearch);
             String report_id_search = id_search.getText().toString();
+
             @Override
             protected Void doInBackground(Integer... reportIds) {
 

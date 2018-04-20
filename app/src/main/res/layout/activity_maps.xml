@@ -12,11 +12,25 @@
 
         <EditText
             android:id="@+id/editText"
-            android:imeOptions="actionDone"
+            android:imeOptions="actionSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="4"
-            android:hint="Περιοχή, Οδο, Σημείο" />
+            android:hint="Οδο Περιοχή" />
+
+        <TextView
+            android:id="@+id/textViewOptions"
+            android:onClick="showMapTypeSelectorDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="15dp"
+            android:paddingTop="10dp"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:text="&#8942;"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
 
         <Button

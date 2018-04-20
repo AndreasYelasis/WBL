@@ -117,7 +117,7 @@ public class ReportsAdapter extends RecyclerView.Adapter<ReportsAdapter.ViewHold
                     return true;
                 case R.id.action_showall:
                     Toast.makeText(context, reports.get(pos).getReportId()+" update", Toast.LENGTH_SHORT).show();
-                    Intent showallIntent = new Intent(context,InfoActivity.class);
+                    Intent showallIntent = new Intent(context,ModificationActivity.class);
                     Bundle info = new Bundle();
                     info.putInt("report_id",reports.get(pos).getReportId());
                     info.putString("area",reports.get(pos).getArea());
@@ -132,6 +132,8 @@ public class ReportsAdapter extends RecyclerView.Adapter<ReportsAdapter.ViewHold
                     return true;
                 case R.id.action_map:
                     Toast.makeText(context, "Delete "+reports.get(pos).getReportId(), Toast.LENGTH_SHORT).show();
+
+
                     Intent mapIntent = new Intent(context, MapsActivity.class);
                     mapIntent.putExtra("odos",reports.get(pos).getAddress()+" "+reports.get(pos).getArea());
                     context.startActivity(mapIntent);

@@ -1,6 +1,7 @@
 package com.andreas.wbl;
 
 import android.app.DownloadManager;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,7 +23,7 @@ import android.widget.Toast;
 
 public class NavDraActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    public GPSTracker gps;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,30 +111,12 @@ public class NavDraActivity extends AppCompatActivity
             startActivity(updateintent);
         } else if (id == R.id.nav_location) {
 
-            // Create class object
-            gps = new GPSTracker(NavDraActivity.this);
-
-            // Check if GPS enabled
-            if(gps.canGetLocation()) {
-
-                double latitude = gps.getLatitude();
-                double longitude = gps.getLongitude();
-
-                // \n is for new line
-                Toast.makeText(getApplicationContext(), "Συντεταγμένες - \nΓεωγραφικό Πλάτος: " + latitude + "\nΓεωγραφικό μήκος: " + longitude, Toast.LENGTH_LONG).show();
-
-            } else {
-                // Can't get location.
-                // GPS or network is not enabled.
-                // Ask user to enable GPS/network in settings.
-                gps.showSettingsAlert();
-            }
-            Intent location_intent = new Intent(this, MapsActivity.class);
-            Bundle coordinates = new Bundle();
-            coordinates.putDouble("latitude", gps.getLatitude());
-            coordinates.putDouble("longitude", gps.getLongitude());
-            location_intent.putExtras(coordinates);
-            startActivity(location_intent);
+            Intent intent = new Intent("android.intent.action.VIEW");
+            intent.setComponent(ComponentName.unflattenFromString("com.google.android.apps.maps/com.google.android.maps.MapsActivity"));
+//            intent.addCategory(android.location.Geocoder);
+// replace string with your Google My Map URL
+            intent.setData(Uri.parse("https://drive.google.com/open?id=1CMa2_TuP6Xz3aphdn6VsSTZgMj0PXu0w&usp=sharing"));
+            startActivity(intent);
 
         } else if (id == R.id.nav_webpage) {
                 WebView browser = (WebView) findViewById(R.id.webView);//i leksi browser ego tin onomazo etsi mporei na einai Andreas

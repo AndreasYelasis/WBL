@@ -1,6 +1,7 @@
 package com.andreas.wbl;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -8,6 +9,7 @@ import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
@@ -26,7 +28,7 @@ import java.util.List;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-
+    private GPSTracker gps;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,27 +38,67 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+//        EditText locationSearch = (EditText) findViewById(R.id.editText);
+//        String location;
+//        Intent mapIntent = getIntent();
+//        if (locationSearch.getText().toString().equals("")){//An den exei kati grammeno o xristis tote pianei tin odo apo to intent
+//            location = mapIntent.getStringExtra("odos");
+//            locationSearch.setText(mapIntent.getStringExtra("odos"));}
+//        else
+//            location = locationSearch.getText().toString();
+
+        // Create class object
+        gps = new GPSTracker(MapsActivity.this);
+
+        // Check if GPS enabled
+        if(gps.canGetLocation()) {
+
+            double latitude = gps.getLatitude();
+            double longitude = gps.getLongitude();
+
+            // \n is for new line
+            Toast.makeText(getApplicationContext(), "Συντεταγμένες - \nΓεωγραφικό Πλάτος: " + latitude + "\nΓεωγραφικό μήκος: " + longitude, Toast.LENGTH_LONG).show();
+
+        } else {
+            // Can't get location.
+            // GPS or network is not enabled.
+            // Ask user to enable GPS/network in settings.
+            gps.showSettingsAlert();
+        }
+
+//            Intent location_intent = new Intent(this, MapsActivity.class);
+//            Bundle coordinates = new Bundle();
+//            coordinates.putDouble("latitude", gps.getLatitude());
+//            coordinates.putDouble("longitude", gps.getLongitude());
+//            location_intent.putExtras(coordinates);
+//            startActivity(location_intent);
+
     }
 
     public void onMapSearch(View view) {
+
         EditText locationSearch = (EditText) findViewById(R.id.editText);
-        String location = locationSearch.getText().toString();
-        //location="Limassol, Anexartisias 6";
-        List<Address> addressList = null;
+        String location;
         Intent mapIntent = getIntent();
-        location = mapIntent.getStringExtra("odos");
-        locationSearch.setText(mapIntent.getStringExtra("odos"));
+        if (locationSearch.getText().toString().equals("")){//An den exei kati grammeno o xristis tote pianei tin odo apo to intent
+            location = mapIntent.getStringExtra("odos");
+            locationSearch.setText(mapIntent.getStringExtra("odos"));}
+        else
+            location = locationSearch.getText().toString();
+
+        List<Address> addressList = null;
         if (location != null || !location.equals("")) {
             Geocoder geocoder = new Geocoder(this);
             try {
-                addressList = geocoder.getFromLocationName(location, 2);
+                addressList = geocoder.getFromLocationName(location, 1);
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
             Address address = addressList.get(0);
             LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
             mMap.addMarker(new MarkerOptions().position(latLng).title("Εδώ"));
             mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
         }
@@ -68,12 +110,59 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Add a marker in Symvoulio Ydatopromithias Lemesou and move the camera
         LatLng wbl = new LatLng(34.6688003, 33.0263837);
         mMap.addMarker(new MarkerOptions().position(wbl).title("Συμβούλιο Υδατοπρομήθειας Λεμεσού"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(wbl, 15));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(wbl, 10));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(wbl));
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
         mMap.setMyLocationEnabled(true);
     }
+
+    public void showMapTypeSelectorDialog(View view) {
+        // Prepare the dialog by setting up a Builder.
+        final String fDialogTitle = "Select Map Type";
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(fDialogTitle);
+
+        // Find the current map type to pre-check the item representing the current state.
+        int checkItem = mMap.getMapType() - 1;
+
+        // Add an OnClickListener to the dialog, so that the selection will be handled.
+        builder.setSingleChoiceItems(
+                MAP_TYPE_ITEMS,
+                checkItem,
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int item) {
+                        // Locally create a finalised object.
+
+                        // Perform an action depending on which item was selected.
+                        switch (item) {
+                            case 1:
+                                mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                                break;
+                            case 2:
+                                mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+                                break;
+                            case 3:
+                                mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                                break;
+                            default:
+                                mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                        }
+                        dialog.dismiss();
+                    }
+                }
+        );
+
+        // Build the dialog and show it.
+        AlertDialog fMapTypeDialog = builder.create();
+        fMapTypeDialog.setCanceledOnTouchOutside(true);
+        fMapTypeDialog.show();
+    }
+
+
+    private static final CharSequence[] MAP_TYPE_ITEMS =
+            {"Road Map", "Hybrid", "Satellite", "Terrain"};
 
 }
