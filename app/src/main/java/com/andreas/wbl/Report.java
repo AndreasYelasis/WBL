@@ -103,6 +103,7 @@ public class Report {
     public void setZipCode(int zip_code) {
         this.zip_code = zip_code;
     }
+
     public String getCustomerName() {
         return customer_name;
     }

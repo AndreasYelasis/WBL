@@ -11,12 +11,12 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/editTextSearchAddress"
             android:imeOptions="actionSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="4"
-            android:hint="Οδο Περιοχή" />
+            android:hint="Οδος Περιοχή" />
 
         <TextView
             android:id="@+id/textViewOptions"

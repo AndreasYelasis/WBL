@@ -111,31 +111,32 @@ public class ReportsAdapter extends RecyclerView.Adapter<ReportsAdapter.ViewHold
             switch (menuItem.getItemId()) {
                 case R.id.action_complete:
                     Toast.makeText(context, reports.get(pos).getReportId()+" history", Toast.LENGTH_SHORT).show();
-                    Intent completeIntent = new Intent(context, InfoActivity.class);
-                    completeIntent.putExtra("thesi",reports.get(pos).getReportId());
-                    context.startActivity(completeIntent);
+//                    Intent completeIntent = new Intent(context, InfoActivity.class);
+//                    completeIntent.putExtra("thesi",reports.get(pos).getReportId());
+//                    context.startActivity(completeIntent);
                     return true;
                 case R.id.action_showall:
                     Toast.makeText(context, reports.get(pos).getReportId()+" update", Toast.LENGTH_SHORT).show();
-                    Intent showallIntent = new Intent(context,ModificationActivity.class);
-                    Bundle info = new Bundle();
-                    info.putInt("report_id",reports.get(pos).getReportId());
-                    info.putString("area",reports.get(pos).getArea());
-                    info.putString("address",reports.get(pos).getAddress());
-                    info.putInt("zip_code",reports.get(pos).getZipCode());
-                    info.putString("customer_name",reports.get(pos).getCustomerName());
-                    info.putString("timestamp_taken",reports.get(pos).getTimestampTaken());
-                    info.putInt("phone",reports.get(pos).getPhone());
-                    info.putString("synergio",reports.get(pos).getSynergio());
-                    showallIntent.putExtras(info);
-                    context.startActivity(showallIntent);
+                    Intent modificationIntent = new Intent(context,ModificationActivity.class);
+                    Bundle reportinfo = new Bundle();
+                    reportinfo.putString("report_id",reports.get(pos).getReportId()+"");
+                    reportinfo.putString("area",reports.get(pos).getArea());
+                    reportinfo.putString("address",reports.get(pos).getAddress());
+                    reportinfo.putString("zip_code",reports.get(pos).getZipCode()+"");
+                    reportinfo.putString("customer_name",reports.get(pos).getCustomerName());
+                    reportinfo.putString("timestamp_taken",reports.get(pos).getTimestampTaken()+"");
+                    reportinfo.putString("phone",reports.get(pos).getPhone()+"");
+                    reportinfo.putString("synergio",reports.get(pos).getSynergio());
+                    modificationIntent.putExtras(reportinfo);
+                    context.startActivity(modificationIntent);
                     return true;
                 case R.id.action_map:
                     Toast.makeText(context, "Delete "+reports.get(pos).getReportId(), Toast.LENGTH_SHORT).show();
-
-
                     Intent mapIntent = new Intent(context, MapsActivity.class);
-                    mapIntent.putExtra("odos",reports.get(pos).getAddress()+" "+reports.get(pos).getArea());
+                    Bundle mapinfo = new Bundle();
+                    mapinfo.putString("address",reports.get(pos).getAddress());
+                    mapinfo.putString("area",reports.get(pos).getArea());
+                    mapIntent.putExtras(mapinfo);
                     context.startActivity(mapIntent);
                     return true;
                 default:

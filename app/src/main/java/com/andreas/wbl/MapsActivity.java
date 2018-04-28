@@ -1,11 +1,14 @@
 package com.andreas.wbl;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
@@ -30,7 +33,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private GPSTracker gps;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
@@ -78,17 +81,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public void onMapSearch(View view) {
 
-        EditText locationSearch = (EditText) findViewById(R.id.editText);
+        EditText locationSearch = (EditText) findViewById(R.id.editTextSearchAddress);
         String location;
         Intent mapIntent = getIntent();
+        Bundle mapinfo = mapIntent.getExtras();
         if (locationSearch.getText().toString().equals("")){//An den exei kati grammeno o xristis tote pianei tin odo apo to intent
-            location = mapIntent.getStringExtra("odos");
-            locationSearch.setText(mapIntent.getStringExtra("odos"));}
+            location = mapinfo.getString("address")+" "+mapinfo.getString("area");
+            locationSearch.setText(mapinfo.getString("address")+" "+mapinfo.getString("area"));}
         else
             location = locationSearch.getText().toString();
 
+        if(isNetworkAvailable()){
         List<Address> addressList = null;
-        if (location != null || !location.equals("")) {
             Geocoder geocoder = new Geocoder(this);
             try {
                 addressList = geocoder.getFromLocationName(location, 1);
@@ -99,9 +103,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             Address address = addressList.get(0);
             LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
-            mMap.addMarker(new MarkerOptions().position(latLng).title("Εδώ"));
+            mMap.addMarker(new MarkerOptions().position(latLng).title("Προορισμός"));
             mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
         }
+        else
+            Toast.makeText(this,"No internet Access",Toast.LENGTH_LONG).show();
+    }
+    
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     @Override
@@ -160,7 +173,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         fMapTypeDialog.setCanceledOnTouchOutside(true);
         fMapTypeDialog.show();
     }
-
 
     private static final CharSequence[] MAP_TYPE_ITEMS =
             {"Road Map", "Hybrid", "Satellite", "Terrain"};

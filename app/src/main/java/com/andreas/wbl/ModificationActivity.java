@@ -48,7 +48,7 @@ public class ModificationActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         final String Url = "http://DESKTOP-796HOHI/wbl_update_reports.php?";
         Intent modificationIntent = getIntent();
-        Bundle info=getIntent().getExtras();
+        Bundle reportinfo = modificationIntent.getExtras();
 
         final String report_id_string;
         final String report_area_string;
@@ -87,89 +87,90 @@ public class ModificationActivity extends AppCompatActivity {
 
 
         if (modificationIntent != null) {//an exo intent tote afta ta string tha paroun timi apo intent
-        report_id_string = modificationIntent.getStringExtra("report_id");
-        report_area_string = modificationIntent.getStringExtra("area");
-        report_address_string = modificationIntent.getStringExtra("address");
-        report_zip_code_string = modificationIntent.getStringExtra("zip_code");
-        report_customer_string = modificationIntent.getStringExtra("customer_name");
-        report_timestamp_taken_string = modificationIntent.getStringExtra("timestamp_taken");
-        report_phone_string = modificationIntent.getStringExtra("phone");
-        report_synergio_string = modificationIntent.getStringExtra("synergio");
+        Toast.makeText(getApplicationContext(),"Andreas",Toast.LENGTH_LONG).show();
+        report_id_string = reportinfo.getString("report_id");
+        report_area_string = reportinfo.getString("area");
+        report_address_string = reportinfo.getString("address");
+        report_zip_code_string = reportinfo.getString("zip_code");
+        report_customer_string = reportinfo.getString("customer_name");
+        report_timestamp_taken_string = reportinfo.getString("timestamp_taken");
+        report_phone_string = reportinfo.getString("phone");
+        report_synergio_string = reportinfo.getString("synergio");
         //emfanisi tou minimatos sta EditText
-        report_id_text.setText(modificationIntent.getStringExtra("report_id"));
-        report_area_text.setText(modificationIntent.getStringExtra("area"));
-        report_address_text.setText(modificationIntent.getStringExtra("address"));
-        report_zip_code_text.setText(modificationIntent.getStringExtra("zip_code"));
-        report_customer_name_text.setText(modificationIntent.getStringExtra("customer_name"));
-        report_timestamp_taken_text.setText(modificationIntent.getStringExtra("timestamp_taken"));
-        report_phone_text.setText(modificationIntent.getStringExtra("phone"));
-        report_synergio_text.setText(modificationIntent.getStringExtra("synergio"));}
-        else {
-            report_id_string = report_id_text.getText().toString();
-            report_area_string = report_area_text.getText().toString();
-            report_address_string = report_address_text.getText().toString();
-            report_zip_code_string = report_zip_code_text.getText().toString();
-            report_customer_string = report_customer_name_text.getText().toString();
-            report_timestamp_taken_string = report_timestamp_taken_text.getText().toString();
-            report_phone_string = report_phone_text.getText().toString();
-            report_synergio_string = report_synergio_text.getText().toString();
-        }
+        report_id_text.setText(reportinfo.getString("report_id"));
+        report_area_text.setText(reportinfo.getString("area"));
+        report_address_text.setText(reportinfo.getString("address"));
+        report_zip_code_text.setText(reportinfo.getString("zip_code"));
+        report_customer_name_text.setText(reportinfo.getString("customer_name"));
+        report_timestamp_taken_text.setText(reportinfo.getString("timestamp_taken"));
+        report_phone_text.setText(reportinfo.getString("phone"));
+        report_synergio_text.setText(reportinfo.getString("synergio"));}
+//        else {
+//            report_id_string = report_id_text.getText().toString();
+//            report_area_string = report_area_text.getText().toString();
+//            report_address_string = report_address_text.getText().toString();
+//            report_zip_code_string = report_zip_code_text.getText().toString();
+//            report_customer_string = report_customer_name_text.getText().toString();
+//            report_timestamp_taken_string = report_timestamp_taken_text.getText().toString();
+//            report_phone_string = report_phone_text.getText().toString();
+//            report_synergio_string = report_synergio_text.getText().toString();
+//        }
 
-        report_thema_string = report_thema_text.getText().toString();
-        report_reason_string = report_reason_text.getText().toString();
-        report_action_string = report_action_text.getText().toString();
-        report_diametros_string = report_diametros_text.getText().toString();
-        report_type_string = report_type_text.getText().toString();
-        report_damage_string = report_damage_text.getText().toString();
-        report_vathos_string = report_vathos_text.getText().toString();
-        report_completed_string = report_completed_text.getText().toString();
+//        report_thema_string = report_thema_text.getText().toString();
+//        report_reason_string = report_reason_text.getText().toString();
+//        report_action_string = report_action_text.getText().toString();
+//        report_diametros_string = report_diametros_text.getText().toString();
+//        report_type_string = report_type_text.getText().toString();
+//        report_damage_string = report_damage_text.getText().toString();
+//        report_vathos_string = report_vathos_text.getText().toString();
+//        report_completed_string = report_completed_text.getText().toString();
 
-        final Button modifyButton = (Button) findViewById(R.id.buttonUpdateRegister1);
-        modifyButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+//        final Button modifyButton = (Button) findViewById(R.id.buttonUpdateRegister1);
+//        modifyButton.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+////
+//                OkHttpClient client = new OkHttpClient();
 //
-                OkHttpClient client = new OkHttpClient();
-
-                RequestBody formBody = new FormBody.Builder()
-                        .add("report_id",report_id_string)
-                        .add("area",report_area_string)
-                        .add("address",report_address_string)
-                        .add("zip_code",report_zip_code_string)
-                        .add("customer_name",report_customer_string)
-                        .add("timestamp_taken",report_timestamp_taken_string)
-                        .add("phone",report_phone_string)
-                        .add("synergio",report_synergio_string)
-                        .add("thema",report_thema_string)
-                        .add("reason",report_reason_string)
-                        .add("action",report_action_string)
-                        .add("diametros",report_diametros_string)
-                        .add("type",report_type_string)
-                        .add("damage",report_damage_string)
-                        .add("vathos",report_vathos_string)
-                        .add("completed",report_completed_string)
-                        .build();
-
-                Request request = new Request.Builder()
-                        .url(Url)
-                        .post(formBody)
-                        .build();
-
-                client.newCall(request).enqueue(new Callback() {
-                    @Override
-                    public void onFailure(Call call, IOException e) {
-                        call.cancel();
-                    }
-
-                    @Override
-                    public void onResponse(Call call, Response response) throws IOException {
-
-                        Log.d("TAG", response.body().string());
-                    }
-                });
-                Toast.makeText(getApplicationContext(),"Update Sent...",Toast.LENGTH_LONG).show();
-                //
-            }
-        });
+//                RequestBody formBody = new FormBody.Builder()
+//                        .add("report_id",report_id_string)
+//                        .add("area",report_area_string)
+//                        .add("address",report_address_string)
+//                        .add("zip_code",report_zip_code_string)
+//                        .add("customer_name",report_customer_string)
+//                        .add("timestamp_taken",report_timestamp_taken_string)
+//                        .add("phone",report_phone_string)
+//                        .add("synergio",report_synergio_string)
+//                        .add("thema",report_thema_string)
+//                        .add("reason",report_reason_string)
+//                        .add("action",report_action_string)
+//                        .add("diametros",report_diametros_string)
+//                        .add("type",report_type_string)
+//                        .add("damage",report_damage_string)
+//                        .add("vathos",report_vathos_string)
+//                        .add("completed",report_completed_string)
+//                        .build();
+//
+//                Request request = new Request.Builder()
+//                        .url(Url)
+//                        .post(formBody)
+//                        .build();
+//
+//                client.newCall(request).enqueue(new Callback() {
+//                    @Override
+//                    public void onFailure(Call call, IOException e) {
+//                        call.cancel();
+//                    }
+//
+//                    @Override
+//                    public void onResponse(Call call, Response response) throws IOException {
+//
+//                        Log.d("TAG", response.body().string());
+//                    }
+//                });
+//                Toast.makeText(getApplicationContext(),"Update Sent...",Toast.LENGTH_LONG).show();
+//                //
+//            }
+//        });
 
 //        getReportsFromDB(0);
     }
