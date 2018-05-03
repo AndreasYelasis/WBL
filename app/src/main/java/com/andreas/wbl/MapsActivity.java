@@ -42,15 +42,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-//        EditText locationSearch = (EditText) findViewById(R.id.editText);
-//        String location;
-//        Intent mapIntent = getIntent();
-//        if (locationSearch.getText().toString().equals("")){//An den exei kati grammeno o xristis tote pianei tin odo apo to intent
-//            location = mapIntent.getStringExtra("odos");
-//            locationSearch.setText(mapIntent.getStringExtra("odos"));}
-//        else
-//            location = locationSearch.getText().toString();
-
         // Create class object
         gps = new GPSTracker(MapsActivity.this);
 
@@ -67,15 +58,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             // Can't get location.
             // GPS or network is not enabled.
             // Ask user to enable GPS/network in settings.
+            Toast.makeText(getApplicationContext(), "Οι Συντεταγμένες δεν έχουν καταχωριθεί\nΕνεργοποιήστε τον αισθητηρα τοποθεσείας", Toast.LENGTH_LONG).show();
             gps.showSettingsAlert();
         }
-
-//            Intent location_intent = new Intent(this, MapsActivity.class);
-//            Bundle coordinates = new Bundle();
-//            coordinates.putDouble("latitude", gps.getLatitude());
-//            coordinates.putDouble("longitude", gps.getLongitude());
-//            location_intent.putExtras(coordinates);
-//            startActivity(location_intent);
 
     }
 
