@@ -399,7 +399,7 @@
 
         <Button
             android:id="@+id/buttonUpdateRegister1"
-            android:onClick="postUpdatedReportToDB1"
+            android:onClick="postUpdatedReportToDB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"

@@ -31,6 +31,9 @@ import okhttp3.Response;
 public class ModificationActivity extends AppCompatActivity {
     private List<Report> reports;
     private ReportsAdapter adapter;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,76 +49,78 @@ public class ModificationActivity extends AppCompatActivity {
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        final String Url = "http://DESKTOP-796HOHI/wbl_update_reports.php?";
-        Intent modificationIntent = getIntent();
-        Bundle reportinfo = modificationIntent.getExtras();
 
-        final String report_id_string;
-        final String report_area_string;
-        final String report_address_string;
-        final String report_zip_code_string;
-        final String report_customer_string;
-        final String report_timestamp_taken_string;
-        final String report_phone_string;
-        final String report_synergio_string;
-        final String report_thema_string;
-        final String report_reason_string;
-        final String report_action_string;
-        final String report_diametros_string;
-        final String report_type_string;
-        final String report_damage_string;
-        final String report_vathos_string;
-        final String report_completed_string;
-
-
-        EditText report_id_text = (EditText) findViewById(R.id.editTextReportId1);
-        EditText report_area_text = (EditText) findViewById(R.id.editTextReportArea);
-        EditText report_address_text = (EditText) findViewById(R.id.editTextReportAddress);
-        EditText report_zip_code_text = (EditText) findViewById(R.id.editTextReportZipCode);
-        EditText report_customer_name_text = (EditText) findViewById(R.id.editTextReportCustomerName);
-        EditText report_timestamp_taken_text = (EditText) findViewById(R.id.editTextReportTimeStampTaken);
-        EditText report_phone_text = (EditText) findViewById(R.id.editTextReportPhone);
-        EditText report_synergio_text = (EditText) findViewById(R.id.editTextReportSynergio);
-        EditText report_thema_text = (EditText)findViewById(R.id.editTextReportThema1);
-        EditText report_reason_text = (EditText)findViewById(R.id.editTextReportReason1);
-        EditText report_action_text = (EditText)findViewById(R.id.editTextReportAction1);
-        EditText report_diametros_text = (EditText)findViewById(R.id.editTextReportDiametros1);
-        EditText report_type_text = (EditText)findViewById(R.id.editTextReportType1);
-        EditText report_damage_text = (EditText)findViewById(R.id.editTextReportDamage1);
-        EditText report_vathos_text = (EditText)findViewById(R.id.editTextReportVathos1);
-        EditText report_completed_text = (EditText)findViewById(R.id.editTextReportCompleted1);
-
-
-        if (modificationIntent != null) {//an exo intent tote afta ta string tha paroun timi apo intent
-        Toast.makeText(getApplicationContext(),"Andreas",Toast.LENGTH_LONG).show();
-        report_id_string = reportinfo.getString("report_id");
-        report_area_string = reportinfo.getString("area");
-        report_address_string = reportinfo.getString("address");
-        report_zip_code_string = reportinfo.getString("zip_code");
-        report_customer_string = reportinfo.getString("customer_name");
-        report_timestamp_taken_string = reportinfo.getString("timestamp_taken");
-        report_phone_string = reportinfo.getString("phone");
-        report_synergio_string = reportinfo.getString("synergio");
-        //emfanisi tou minimatos sta EditText
-        report_id_text.setText(reportinfo.getString("report_id"));
-        report_area_text.setText(reportinfo.getString("area"));
-        report_address_text.setText(reportinfo.getString("address"));
-        report_zip_code_text.setText(reportinfo.getString("zip_code"));
-        report_customer_name_text.setText(reportinfo.getString("customer_name"));
-        report_timestamp_taken_text.setText(reportinfo.getString("timestamp_taken"));
-        report_phone_text.setText(reportinfo.getString("phone"));
-        report_synergio_text.setText(reportinfo.getString("synergio"));}
-//        else {
-//            report_id_string = report_id_text.getText().toString();
-//            report_area_string = report_area_text.getText().toString();
-//            report_address_string = report_address_text.getText().toString();
-//            report_zip_code_string = report_zip_code_text.getText().toString();
-//            report_customer_string = report_customer_name_text.getText().toString();
-//            report_timestamp_taken_string = report_timestamp_taken_text.getText().toString();
-//            report_phone_string = report_phone_text.getText().toString();
-//            report_synergio_string = report_synergio_text.getText().toString();
-//        }
-
+//        final String Url = "http://DESKTOP-796HOHI/wbl_update_reports.php?";
+//
+//        Intent modificationIntent = getIntent();
+//        Bundle reportinfo = modificationIntent.getExtras();
+//
+//        final String report_id_string;
+//        final String report_area_string;
+//        final String report_address_string;
+//        final String report_zip_code_string;
+//        final String report_customer_string;
+//        final String report_timestamp_taken_string;
+//        final String report_phone_string;
+//        final String report_synergio_string;
+//        final String report_thema_string;
+//        final String report_reason_string;
+//        final String report_action_string;
+//        final String report_diametros_string;
+//        final String report_type_string;
+//        final String report_damage_string;
+//        final String report_vathos_string;
+//        final String report_completed_string;
+//
+//        EditText report_id_text = (EditText) findViewById(R.id.editTextReportId1);
+//        EditText report_area_text = (EditText) findViewById(R.id.editTextReportArea);
+//        EditText report_address_text = (EditText) findViewById(R.id.editTextReportAddress);
+//        EditText report_zip_code_text = (EditText) findViewById(R.id.editTextReportZipCode);
+//        EditText report_customer_name_text = (EditText) findViewById(R.id.editTextReportCustomerName);
+//        EditText report_timestamp_taken_text = (EditText) findViewById(R.id.editTextReportTimeStampTaken);
+//        EditText report_phone_text = (EditText) findViewById(R.id.editTextReportPhone);
+//        EditText report_synergio_text = (EditText) findViewById(R.id.editTextReportSynergio);
+//        EditText report_thema_text = (EditText) findViewById(R.id.editTextReportThema1);
+//        EditText report_reason_text = (EditText) findViewById(R.id.editTextReportReason1);
+//        EditText report_action_text = (EditText) findViewById(R.id.editTextReportAction1);
+//        EditText report_diametros_text = (EditText) findViewById(R.id.editTextReportDiametros1);
+//        EditText report_type_text = (EditText) findViewById(R.id.editTextReportType1);
+//        EditText report_damage_text = (EditText) findViewById(R.id.editTextReportDamage1);
+//        EditText report_vathos_text = (EditText) findViewById(R.id.editTextReportVathos1);
+//        EditText report_completed_text = (EditText) findViewById(R.id.editTextReportCompleted1);
+//
+//
+////        if (modificationIntent != null) {//an exo intent tote afta ta string tha paroun timi apo intent
+////        if (!reportinfo.getString("report_id").equals("")) {//an exo intent tote afta ta string tha paroun timi apo intent
+//            Toast.makeText(getApplicationContext(), "Andreas", Toast.LENGTH_LONG).show();
+//            report_id_string = reportinfo.getString("report_id")+"";
+//            report_area_string = reportinfo.getString("area")+"";
+//            report_address_string = reportinfo.getString("address")+"";
+//            report_zip_code_string = reportinfo.getString("zip_code")+"";
+//            report_customer_string = reportinfo.getString("customer_name")+"";
+//            report_timestamp_taken_string = reportinfo.getString("timestamp_taken")+"";
+//            report_phone_string = reportinfo.getString("phone")+"";
+//            report_synergio_string = reportinfo.getString("synergio")+"";
+//            //emfanisi tou minimatos sta EditText
+//            report_id_text.setText(reportinfo.getString("report_id"));
+//            report_area_text.setText(reportinfo.getString("area"));
+//            report_address_text.setText(reportinfo.getString("address"));
+//            report_zip_code_text.setText(reportinfo.getString("zip_code"));
+//            report_customer_name_text.setText(reportinfo.getString("customer_name"));
+//            report_timestamp_taken_text.setText(reportinfo.getString("timestamp_taken"));
+//            report_phone_text.setText(reportinfo.getString("phone"));
+//            report_synergio_text.setText(reportinfo.getString("synergio"));
+////        } else {
+////            report_id_string = report_id_text.getText().toString();
+////            report_area_string = report_area_text.getText().toString();
+////            report_address_string = report_address_text.getText().toString();
+////            report_zip_code_string = report_zip_code_text.getText().toString();
+////            report_customer_string = report_customer_name_text.getText().toString();
+////            report_timestamp_taken_string = report_timestamp_taken_text.getText().toString();
+////            report_phone_string = report_phone_text.getText().toString();
+////            report_synergio_string = report_synergio_text.getText().toString();
+////        }
+//
 //        report_thema_string = report_thema_text.getText().toString();
 //        report_reason_string = report_reason_text.getText().toString();
 //        report_action_string = report_action_text.getText().toString();
@@ -124,30 +129,37 @@ public class ModificationActivity extends AppCompatActivity {
 //        report_damage_string = report_damage_text.getText().toString();
 //        report_vathos_string = report_vathos_text.getText().toString();
 //        report_completed_string = report_completed_text.getText().toString();
-
+//
 //        final Button modifyButton = (Button) findViewById(R.id.buttonUpdateRegister1);
 //        modifyButton.setOnClickListener(new View.OnClickListener() {
 //            public void onClick(View v) {
-////
+//                Toast.makeText(ModificationActivity.this, "Mpeno mesa",Toast.LENGTH_LONG).show();
+//                String Url="http://DESKTOP-796HOHI/wbl_update_reports.php?";
+//                postUpdatedReportToDB(Url);
+//            }
+//
+//        });
+
+
 //                OkHttpClient client = new OkHttpClient();
 //
 //                RequestBody formBody = new FormBody.Builder()
-//                        .add("report_id",report_id_string)
-//                        .add("area",report_area_string)
-//                        .add("address",report_address_string)
-//                        .add("zip_code",report_zip_code_string)
-//                        .add("customer_name",report_customer_string)
-//                        .add("timestamp_taken",report_timestamp_taken_string)
-//                        .add("phone",report_phone_string)
-//                        .add("synergio",report_synergio_string)
-//                        .add("thema",report_thema_string)
-//                        .add("reason",report_reason_string)
-//                        .add("action",report_action_string)
-//                        .add("diametros",report_diametros_string)
-//                        .add("type",report_type_string)
-//                        .add("damage",report_damage_string)
-//                        .add("vathos",report_vathos_string)
-//                        .add("completed",report_completed_string)
+//                        .add("report_id", report_id_string)
+//                        .add("area", report_area_string)
+//                        .add("address", report_address_string)
+//                        .add("zip_code", report_zip_code_string)
+//                        .add("customer_name", report_customer_string)
+//                        .add("timestamp_taken", report_timestamp_taken_string)
+//                        .add("phone", report_phone_string)
+//                        .add("synergio", report_synergio_string)
+//                        .add("thema", report_thema_string)
+//                        .add("reason", report_reason_string)
+//                        .add("action", report_action_string)
+//                        .add("diametros", report_diametros_string)
+//                        .add("type", report_type_string)
+//                        .add("damage", report_damage_string)
+//                        .add("vathos", report_vathos_string)
+//                        .add("completed", report_completed_string)
 //                        .build();
 //
 //                Request request = new Request.Builder()
@@ -167,14 +179,66 @@ public class ModificationActivity extends AppCompatActivity {
 //                        Log.d("TAG", response.body().string());
 //                    }
 //                });
-//                Toast.makeText(getApplicationContext(),"Update Sent...",Toast.LENGTH_LONG).show();
-//                //
+//                Toast.makeText(getApplicationContext(), "Update Sent...", Toast.LENGTH_LONG).show();
 //            }
 //        });
+    }//end of onCreate
 
-//        getReportsFromDB(0);
+    public void postUpdatedReportToDB(View view) throws IOException {
+
+        String Url = "http://DESKTOP-796HOHI/wbl_update_reports.php?";
+        EditText report_id_text = (EditText)findViewById(R.id.editTextReportId1);
+        String report_id_string = report_id_text.getText().toString();
+        EditText thema_text = (EditText)findViewById(R.id.editTextReportThema1);
+        String report_thema_string = thema_text.getText().toString();
+        EditText report_reason_text = (EditText)findViewById(R.id.editTextReportReason1);
+        String report_reason_string = report_reason_text.getText().toString();
+        EditText report_action_text = (EditText)findViewById(R.id.editTextReportAction1);
+        String report_action_string = report_action_text.getText().toString();
+        EditText report_diametros_text = (EditText)findViewById(R.id.editTextReportDiametros1);
+        String report_diametros_string = report_diametros_text.getText().toString();
+        EditText report_type_text = (EditText)findViewById(R.id.editTextReportType1);
+        String report_type_string = report_type_text.getText().toString();
+        EditText report_damage_text = (EditText)findViewById(R.id.editTextReportDamage1);
+        String report_damage_string = report_damage_text.getText().toString();
+        EditText report_vathos_text = (EditText)findViewById(R.id.editTextReportVathos1);
+        String report_vathos_string = report_vathos_text.getText().toString();
+        EditText report_completed_text = (EditText)findViewById(R.id.editTextReportCompleted1);
+        String report_completed_string = report_completed_text.getText().toString();
+
+        OkHttpClient client = new OkHttpClient();
+
+        RequestBody formBody = new FormBody.Builder()
+                .add("report_id",report_id_string)
+                .add("thema",report_thema_string)
+                .add("reason",report_reason_string)
+                .add("action",report_action_string)
+                .add("diametros",report_diametros_string)
+                .add("type",report_type_string)
+                .add("damage",report_damage_string)
+                .add("vathos",report_vathos_string)
+                .add("completed",report_completed_string)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(Url)
+                .post(formBody)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                call.cancel();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+
+                Log.d("TAG", response.body().string());
+            }
+        });
+        Toast.makeText(getApplicationContext(),"Update Sent...",Toast.LENGTH_LONG).show();
     }
-//
 //    private void getReportsFromDB(int id) {
 //        AsyncTask<Integer, Void, Void> asyncTask = new AsyncTask<Integer, Void, Void>() {
 //            EditText id_search = (EditText)findViewById(R.id.editTextIdSearch);
@@ -244,58 +308,4 @@ public class ModificationActivity extends AppCompatActivity {
 //        asyncTask.execute(id);
 //    }
 //
-//    public void postUpdatedReportToDB1(View view) throws IOException {
-//        String Url = "http://DESKTOP-796HOHI/wbl_update_reports.php?";
-//
-//
-//        EditText thema_text = (EditText)findViewById(R.id.editTextReportThema1);
-//        String report_thema_string = thema_text.getText().toString();
-//        EditText report_reason_text = (EditText)findViewById(R.id.editTextReportReason1);
-//        String report_reason_string = report_reason_text.getText().toString();
-//        EditText report_action_text = (EditText)findViewById(R.id.editTextReportAction1);
-//        String report_action_string = report_action_text.getText().toString();
-//        EditText report_diametros_text = (EditText)findViewById(R.id.editTextReportDiametros1);
-//        String report_diametros_string = report_diametros_text.getText().toString();
-//        EditText report_type_text = (EditText)findViewById(R.id.editTextReportType1);
-//        String report_type_string = report_type_text.getText().toString();
-//        EditText report_damage_text = (EditText)findViewById(R.id.editTextReportDamage1);
-//        String report_damage_string = report_damage_text.getText().toString();
-//        EditText report_vathos_text = (EditText)findViewById(R.id.editTextReportVathos1);
-//        String report_vathos_string = report_vathos_text.getText().toString();
-//        EditText report_completed_text = (EditText)findViewById(R.id.editTextReportCompleted1);
-//        String report_completed_string = report_completed_text.getText().toString();
-//
-//        OkHttpClient client = new OkHttpClient();
-//
-//        RequestBody formBody = new FormBody.Builder()
-//                .add("report_id",report_id_string)
-//                .add("thema",report_thema_string)
-//                .add("reason",report_reason_string)
-//                .add("action",report_action_string)
-//                .add("diametros",report_diametros_string)
-//                .add("type",report_type_string)
-//                .add("damage",report_damage_string)
-//                .add("vathos",report_vathos_string)
-//                .add("completed",report_completed_string)
-//                .build();
-//
-//        Request request = new Request.Builder()
-//                .url(Url)
-//                .post(formBody)
-//                .build();
-//
-//        client.newCall(request).enqueue(new Callback() {
-//            @Override
-//            public void onFailure(Call call, IOException e) {
-//                call.cancel();
-//            }
-//
-//            @Override
-//            public void onResponse(Call call, Response response) throws IOException {
-//
-//                Log.d("TAG", response.body().string());
-//            }
-//        });
-//        Toast.makeText(getApplicationContext(),"Update Sent...",Toast.LENGTH_LONG).show();
-//    }
 }

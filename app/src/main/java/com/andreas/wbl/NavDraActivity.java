@@ -96,8 +96,6 @@ public class NavDraActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_new_report) {
-//            Intent customersIntent = new Intent(this,CustomerActivity.class);
-//            startActivity(customersIntent);
             Intent newregisterIntent = new Intent(this,ReportRegisterActivity.class);
             startActivity(newregisterIntent);
         } else if (id == R.id.nav_peristatika) {

@@ -80,7 +80,7 @@ public class SynergiasAdapter extends RecyclerView.Adapter<SynergiasAdapter.View
     private void showPopupMenu(View view, int poaition) {
         PopupMenu popup = new PopupMenu(context, view);
         MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.menu_report, popup.getMenu());
+        inflater.inflate(R.menu.menu_synergia, popup.getMenu());
         popup.setOnMenuItemClickListener(new MenuClickListener(poaition));
         popup.show();
     }
@@ -99,10 +99,6 @@ public class SynergiasAdapter extends RecyclerView.Adapter<SynergiasAdapter.View
             switch (menuItem.getItemId()) {
                 case R.id.action_complete:
                     Toast.makeText(context, synergias.get(pos).getSynergiaName()+" history", Toast.LENGTH_SHORT).show();
-                    return true;
-                case R.id.action_showall:
-                    Toast.makeText(context, synergias.get(pos).getSynergiaName()+" update", Toast.LENGTH_SHORT).show();
-//                    updateRegistry();
                     return true;
                 case R.id.action_map:
                     Toast.makeText(context, "Delete "+synergias.get(pos).getSynergiaName(), Toast.LENGTH_SHORT).show();

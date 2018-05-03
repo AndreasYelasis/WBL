@@ -110,12 +110,6 @@ public class ReportsAdapter extends RecyclerView.Adapter<ReportsAdapter.ViewHold
         public boolean onMenuItemClick(MenuItem menuItem) {
             switch (menuItem.getItemId()) {
                 case R.id.action_complete:
-                    Toast.makeText(context, reports.get(pos).getReportId()+" history", Toast.LENGTH_SHORT).show();
-//                    Intent completeIntent = new Intent(context, InfoActivity.class);
-//                    completeIntent.putExtra("thesi",reports.get(pos).getReportId());
-//                    context.startActivity(completeIntent);
-                    return true;
-                case R.id.action_showall:
                     Toast.makeText(context, reports.get(pos).getReportId()+" update", Toast.LENGTH_SHORT).show();
                     Intent modificationIntent = new Intent(context,ModificationActivity.class);
                     Bundle reportinfo = new Bundle();

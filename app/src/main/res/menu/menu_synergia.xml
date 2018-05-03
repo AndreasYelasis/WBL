@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
     <item
         android:id="@+id/action_complete"
-        android:title="Ολοκλήρωση Περιστατικού" />
+        android:title="Ιστορικό" />
     <item
         android:id="@+id/action_map"
-        android:title="Πλοήγηση" />
+        android:title="Πληροφωρίες" />
 </menu>
