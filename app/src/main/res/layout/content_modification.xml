@@ -35,7 +35,11 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView1"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
 
         <TextView
             android:paddingStart="10dp"
@@ -155,7 +159,11 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textViewReportTimeStampTaken"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
 
         <TextView
         android:paddingStart="10dp"
@@ -170,7 +178,7 @@
 
         <EditText
             android:id="@+id/editTextReportPhone"
-            android:hint="πχ 1234"
+            android:hint="πχ 99χχχχχχ"
             android:paddingLeft="10dp"
             android:paddingTop="10dp"
             android:layout_width="wrap_content"
@@ -188,13 +196,13 @@
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:paddingTop="10dp"
-            android:text="Τηλέφωνο"
+            android:text="Συνεργίο"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="4dp" />
 
         <EditText
             android:id="@+id/editTextReportSynergio"
-            android:hint="πχ 1234"
+            android:hint="πχ 6"
             android:paddingLeft="10dp"
             android:paddingTop="10dp"
             android:layout_width="wrap_content"
@@ -396,6 +404,18 @@
             android:layout_below="@+id/textView9"
             android:ems="10"
             android:inputType="number" />
+
+        <Button
+            android:id="@+id/buttonTakePicture"
+            android:onClick="postUpdatedReportToDB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/editTextReportCompleted1"
+            android:text="Φωτογραφία" />
 
         <Button
             android:id="@+id/buttonUpdateRegister1"

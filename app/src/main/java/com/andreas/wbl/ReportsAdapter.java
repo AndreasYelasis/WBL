@@ -43,7 +43,7 @@ public class ReportsAdapter extends RecyclerView.Adapter<ReportsAdapter.ViewHold
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
 
-        Glide.with(context).load(reports.get(position).getPhoto()).into(holder.imageView);
+        Glide.with(context).load("http://DESKTOP-796HOHI/"+reports.get(position).getPhoto()).into(holder.imageView);
         holder.reportId.setText((reports.get(position).getReportId())+"");
         holder.customerName.setText(reports.get(position).getCustomerName());
         holder.area.setText(reports.get(position).getArea());
