@@ -278,7 +278,7 @@ public class ModificationActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String,String> map = new HashMap<>();
-//                map.put("report_id",report_id);
+                map.put("report_id",report_id_string);
                 map.put("encoded_string",encoded_string);
                 map.put("image_name",image_name);
 
