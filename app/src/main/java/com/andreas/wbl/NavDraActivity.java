@@ -105,7 +105,7 @@ public class NavDraActivity extends AppCompatActivity
             Intent synergiaIntent = new Intent(this,SynergiaActivity.class);
             startActivity(synergiaIntent);
         } else if (id == R.id.nav_manage) {
-            Intent updateintent = new Intent(this,ModificationActivity.class);
+            Intent updateintent = new Intent(this,SynergiaActivity.class);
             startActivity(updateintent);
         } else if (id == R.id.nav_location) {
 

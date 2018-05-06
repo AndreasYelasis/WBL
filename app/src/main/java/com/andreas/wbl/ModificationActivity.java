@@ -221,16 +221,16 @@ public class ModificationActivity extends AppCompatActivity {
     private void getFileUri() {
 
 
-//    SimpleDateFormat s = new SimpleDateFormat("ddMMyyyyHHmmss");
-//    String format = s.format(new Date());
-    image_name = "pellaes.jpg";
-    //image_name = format+".jpg";
-    file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
-            + File.separator + image_name
-    );
+    SimpleDateFormat s = new SimpleDateFormat("ddMMyyyyHHmmss");
+    String format = s.format(new Date());
+//        image_name = "pellaes.jpg";
+        image_name = format+".jpg";
+        file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+                + File.separator + image_name
+        );
 
-    file_uri = Uri.fromFile(file);
-}
+        file_uri = Uri.fromFile(file);
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -254,37 +254,38 @@ public class ModificationActivity extends AppCompatActivity {
             return null;
         }
 
-//        @Override
-//        protected void onPostExecute(Void aVoid) {
-//            makeRequest();
-//        }
-//    }
-//
-//    private void makeRequest() {
-//        Toast.makeText(this,"asdfasdfasdfasdfasdf",Toast.LENGTH_LONG).show();
-//        RequestQueue requestQueue = Volley.newRequestQueue(this);
-//        StringRequest request = new StringRequest(Request.Method.POST, "http://DESKTOP-796HOHI/connection.php",
-//                new com.android.volley.Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//
-//                    }
-//                }, new com.android.volley.Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//
-//            }
-//        }) {
-//            @Override
-//            protected Map<String, String> getParams() throws AuthFailureError {
-//                HashMap<String,String> map = new HashMap<>();
-//                map.put("encoded_string",encoded_string);
-//                map.put("image_name",image_name);
-//
-//                return map;
-//            }
-//        };
-//        requestQueue.add(request);
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            makeRequest();
+        }
+    }
+
+    private void makeRequest() {
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest request = new StringRequest(Request.Method.POST, "http://DESKTOP-796HOHI/connection.php",
+                new com.android.volley.Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                    }
+                }, new com.android.volley.Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String,String> map = new HashMap<>();
+//                map.put("report_id",report_id);
+                map.put("encoded_string",encoded_string);
+                map.put("image_name",image_name);
+
+                return map;
+            }
+        };
+        requestQueue.add(request);
     }
     //φινιση
 }
