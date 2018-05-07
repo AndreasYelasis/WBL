@@ -8,16 +8,16 @@
             android:title="Περιστατικά" />
         <item
             android:id="@+id/nav_new_report"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_menu_manage"
             android:title="Εγγραφή Περιστατικού" />
         <item
             android:id="@+id/nav_synergia"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Συνεργία" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Ολοκλήρωση περιστατικού" />
+            android:id="@+id/nav_photo"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Φωτογραφική" />
     </group>
 
     <item android:title="Βοηθήματα">

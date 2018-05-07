@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Water Board Limassol</string>
-    <string name="title_activity_nav_dra">NavDraActivity</string>
+    <string name="title_activity_nav_dra">Πλοηγός</string>
     <string name="country_prompt">Choose a Thema</string>
 
 
@@ -9,12 +9,10 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_info">Πληροφορίες</string>
-    <string name="title_activity_customer">CustomerActivity</string>
-    <string name="title_activity_customer_register">CustomerRegisterActivity</string>
-    <string name="title_activity_maps">Map</string>
-    <string name="title_activity_synergia">SynergiaActivity</string>
-    <string name="title_activity_report">ReportActivity</string>
-    <string name="title_activity_report_register">ReportRegisterActivity</string>
-    <string name="title_activity_modification">ModificationActivity</string>
-    <string name="title_activity_report_update">ReportUpdateActivity</string>
+    <string name="title_activity_maps">Χάρτης</string>
+    <string name="title_activity_synergia">Συνεργεία</string>
+    <string name="title_activity_report">Αναφορές</string>
+    <string name="title_activity_report_register">Εγγραφή Αναφοράς</string>
+    <string name="title_activity_modification">Μορφοποίηση Αναφοράς</string>
+    <string name="title_activity_report_update">Ανανέωση Αναφοράς</string>
 </resources>

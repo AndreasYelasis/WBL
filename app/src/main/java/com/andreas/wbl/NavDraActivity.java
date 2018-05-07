@@ -104,8 +104,8 @@ public class NavDraActivity extends AppCompatActivity
         } else if (id == R.id.nav_synergia) {
             Intent synergiaIntent = new Intent(this,SynergiaActivity.class);
             startActivity(synergiaIntent);
-        } else if (id == R.id.nav_manage) {
-            Intent updateintent = new Intent(this,SynergiaActivity.class);
+        } else if (id == R.id.nav_photo) {
+            Intent updateintent = new Intent(this,TakePhoto.class);
             startActivity(updateintent);
         } else if (id == R.id.nav_location) {
 

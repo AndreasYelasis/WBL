@@ -12,8 +12,5 @@ public class InfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
-        Intent intent = getIntent();
-        Integer position=intent.getIntExtra("thesi",0);
-        Toast.makeText(this, "Position is: " + position,Toast.LENGTH_LONG).show();
     }
 }

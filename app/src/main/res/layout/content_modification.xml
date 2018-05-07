@@ -209,7 +209,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/txt_synergio_spinner"
             android:ems="10"
             android:inputType="number" />
 
@@ -266,6 +265,11 @@
             android:ems="10"
             android:inputType="textPersonName" />
 
+        <Spinner
+            android:id="@+id/spinnerReason"
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
         <TextView
             android:id="@+id/textView4"
             android:paddingLeft="10dp"
@@ -290,6 +294,11 @@
             android:ems="10"
             android:inputType="text" />
 
+        <Spinner
+            android:id="@+id/spinnerAction"
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
         <TextView
             android:id="@+id/textView5"
             android:padding="10dp"
@@ -313,6 +322,11 @@
             android:layout_below="@+id/textView5"
             android:ems="10"
             android:inputType="text" />
+
+        <Spinner
+            android:id="@+id/spinnerDiametros"
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
 
         <TextView
             android:id="@+id/textView6"
@@ -362,6 +376,11 @@
             android:ems="10"
             android:inputType="text" />
 
+        <Spinner
+            android:id="@+id/spinnerType"
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
         <TextView
             android:id="@+id/textView8"
             android:text="Ζημιά"
@@ -385,6 +404,11 @@
             android:layout_below="@+id/textView8"
             android:ems="10"
             android:inputType="text" />
+
+        <Spinner
+            android:id="@+id/spinnerDamage"
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
 
         <TextView
             android:id="@+id/textView9"

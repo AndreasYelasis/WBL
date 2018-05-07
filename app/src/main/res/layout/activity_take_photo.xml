@@ -7,7 +7,7 @@
     tools:context="com.andreas.wbl.TakePhoto">
 
     <Button
-        android:text="TAKE PICTURE"
+        android:text="Φωτογραφιση"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/start"

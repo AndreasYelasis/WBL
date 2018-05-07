@@ -65,6 +65,17 @@ public class ModificationActivity extends AppCompatActivity {
     private File file;
     private Uri file_uri;
     private Spinner spinnerThema;
+    private Spinner spinnerReason;
+    private Spinner spinnerAction;
+    private Spinner spinnerDiametros;
+    private Spinner spinnerType;
+    private Spinner spinnerDamage;
+    private Integer flagReason=0;
+    private Integer flagAction=0;
+    private Integer flagThema=0;
+    private Integer flagDiametros=0;
+    private Integer flagType=0;
+    private Integer flagDamage=0;
 
     String report_id_string="";
     String report_area_string="";
@@ -159,7 +170,13 @@ public class ModificationActivity extends AppCompatActivity {
         report_damage_text.setText(reportinfo.getString("damage"));
         report_vathos_text.setText(reportinfo.getString("vathos"));
 
+        addListenerOnSpinnerItemSelection();
         addItemsOnSpinnerThema();
+        addItemsOnSpinnerReason();
+        addItemsOnSpinnerAction();
+        addItemsOnSpinnerDiametros();
+        addItemsOnSpinnerType();
+        addItemsOnSpinnerDamage();
     }//end of onCreate
 
     public void postUpdatedReportToDB(View view) throws IOException {
@@ -251,13 +268,6 @@ public class ModificationActivity extends AppCompatActivity {
         });
         Toast.makeText(getApplicationContext(),"Update Sent...",Toast.LENGTH_LONG).show();
 
-        spinnerThema = (Spinner) findViewById(R.id.spinnerThema);
-
-
-        Toast.makeText(ModificationActivity.this,
-                      "OnClickListener : " + "\nSpinner Thema : " + String.valueOf(spinnerThema.getSelectedItem()),
-        Toast.LENGTH_SHORT).show();
-
     }
 //σταρτ
     private void getFileUri() {
@@ -330,31 +340,251 @@ public class ModificationActivity extends AppCompatActivity {
         requestQueue.add(request);
     }
     //φινιση
+    public void addListenerOnSpinnerItemSelection() {
+        spinnerThema = (Spinner) findViewById(R.id.spinnerThema);
+        spinnerThema.setOnItemSelectedListener(new CustomOnItemSelectedListenerThema());
+        spinnerReason = (Spinner) findViewById(R.id.spinnerReason);
+        spinnerReason.setOnItemSelectedListener(new CustomOnItemSelectedListenerReason());
+        spinnerAction = (Spinner) findViewById(R.id.spinnerAction);
+        spinnerAction.setOnItemSelectedListener(new CustomOnItemSelectedListenerAction());
+        spinnerDiametros = (Spinner) findViewById(R.id.spinnerDiametros);
+        spinnerDiametros.setOnItemSelectedListener(new CustomOnItemSelectedListenerDiametros());
+        spinnerType = (Spinner) findViewById(R.id.spinnerType);
+        spinnerType.setOnItemSelectedListener(new CustomOnItemSelectedListenerType());
+        spinnerDamage = (Spinner) findViewById(R.id.spinnerDamage);
+        spinnerDamage.setOnItemSelectedListener(new CustomOnItemSelectedListenerDamage());
+    }
     //add items into spinner dynamically
     //spinner Thema
     public void addItemsOnSpinnerThema() {
 
         spinnerThema = (Spinner) findViewById(R.id.spinnerThema);
-        List<String> list = new ArrayList<String>();
-        list.add("Διαρροή νερού στο υποστατικό");
-        list.add("Διαρροή νερού από δίκτυο");
-        list.add("Αφανής διαρροή");
-        list.add("Δεν έχει νερό");
-        list.add("Χαμηλή Πίεση");
-        list.add("Ψηλή Πίεση");
-        list.add("Ποιότητα νερού");
-        list.add("Σπατάλη νερού");
-        list.add("Σπασμένος Υδρομετρητής");
-        list.add("Δυσκολία Καταγραφής Υδρομετρητή");
-        list.add("Διάφορα");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
+        List<String> listThema = new ArrayList<String>();
+        listThema.add("Διαρροή νερού στο υποστατικό");
+        listThema.add("Διαρροή νερού από δίκτυο");
+        listThema.add("Αφανής διαρροή");
+        listThema.add("Δεν έχει νερό");
+        listThema.add("Χαμηλή Πίεση");
+        listThema.add("Ψηλή Πίεση");
+        listThema.add("Ποιότητα νερού");
+        listThema.add("Σπατάλη νερού");
+        listThema.add("Σπασμένος Υδρομετρητής");
+        listThema.add("Δυσκολία Καταγραφής Υδρομετρητή");
+        listThema.add("Διάφορα");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listThema);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerThema.setAdapter(dataAdapter);
     }
-    spinnerThema.OnItemSelectedListener(this);
-    public void onItemSelected(AdapterView<?> parent, View view, int pos,long id) {
-        Toast.makeText(parent.getContext(),
-                "OnItemSelectedListener : " + parent.getItemAtPosition(pos).toString(),
-                Toast.LENGTH_SHORT).show();
+    public class CustomOnItemSelectedListenerThema implements OnItemSelectedListener {
+
+        public void onItemSelected(AdapterView<?> parent, View view, int pos,long id) {
+            flagThema++;
+            if (flagThema!=1){
+            Toast.makeText(parent.getContext(),"Θέμα : " + parent.getItemAtPosition(pos).toString(),
+                    Toast.LENGTH_SHORT).show();
+                report_thema_string = parent.getItemAtPosition(pos).toString();
+                EditText report_thema_text = (EditText) findViewById(R.id.editTextReportThema1);
+                report_thema_text.setText(parent.getItemAtPosition(pos).toString());
+            }
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> arg0) {
+            // TODO Auto-generated method stub
+
+        }
+
     }
+    //spinner reason
+    public void addItemsOnSpinnerReason() {
+
+        spinnerReason = (Spinner) findViewById(R.id.spinnerReason);
+        List<String> listReason = new ArrayList<String>();
+        listReason.add("Κεντρικός αγωγός");
+        listReason.add("Παροχή υποστατικού");
+        listReason.add("Διαρροή δικλείδας");
+        listReason.add("Διαρροή υδροστομίου πυρόσβεσης");
+        listReason.add("Βλαβη ιδιοκτητη");
+        listReason.add("Άλλη");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listReason);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerReason.setAdapter(dataAdapter);
+    }
+    public class CustomOnItemSelectedListenerReason implements OnItemSelectedListener {
+
+        public void onItemSelected(AdapterView<?> parent, View view, int pos,long id) {
+            flagReason++;
+            if (flagReason!=1){
+                Toast.makeText(parent.getContext(),"Λόγος : " + parent.getItemAtPosition(pos).toString(),
+                        Toast.LENGTH_SHORT).show();
+                report_reason_string = parent.getItemAtPosition(pos).toString();
+                EditText report_reason_text = (EditText) findViewById(R.id.editTextReportReason1);
+                report_reason_text.setText(parent.getItemAtPosition(pos).toString());
+            }
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> arg0) {
+            // TODO Auto-generated method stub
+
+        }
+
+    }
+    //spinner action
+    public void addItemsOnSpinnerAction() {
+
+        spinnerAction = (Spinner) findViewById(R.id.spinnerAction);
+        List<String> listAction = new ArrayList<String>();
+        listAction.add("Αντικατάσταση");
+        listAction.add("Ανύψωση");
+        listAction.add("Μεταφορά");
+        listAction.add("Καταγράφει κανονικά");
+        listAction.add("Επιδιόρθωση");
+        listAction.add("Ενημέρωση ιδιοκτήτη");
+        listAction.add("Άνοιγμα διακόπτη και ενημέρωση ιδιοκτήτη");
+        listAction.add("Άλλη");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listAction);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerAction.setAdapter(dataAdapter);
+    }
+    public class CustomOnItemSelectedListenerAction implements OnItemSelectedListener {
+
+        public void onItemSelected(AdapterView<?> parent, View view, int pos,long id) {
+            flagAction++;
+            if (flagAction!=1){
+                Toast.makeText(parent.getContext(),"Ενέργεια : " + parent.getItemAtPosition(pos).toString(),
+                        Toast.LENGTH_SHORT).show();
+                report_action_string = parent.getItemAtPosition(pos).toString();
+                EditText report_action_text = (EditText) findViewById(R.id.editTextReportAction1);
+                report_action_text.setText(parent.getItemAtPosition(pos).toString());
+            }
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> arg0) {
+            // TODO Auto-generated method stub
+
+        }
+
+    }
+    //spinner diametros
+    public void addItemsOnSpinnerDiametros() {
+
+        spinnerDiametros = (Spinner) findViewById(R.id.spinnerDiametros);
+        List<String> listDiametros = new ArrayList<String>();
+        listDiametros.add("2 ίντζεσ");
+        listDiametros.add("3 ίντζεσ");
+        listDiametros.add("4 ίντζεσ");
+        listDiametros.add("6 ίντζεσ");
+        listDiametros.add("8 ίντζεσ");
+        listDiametros.add("63mm");
+        listDiametros.add("90mm");
+        listDiametros.add("125mm");
+        listDiametros.add("180mm");
+        listDiametros.add("225mm");
+        listDiametros.add("Άλλη");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listDiametros);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerDiametros.setAdapter(dataAdapter);
+    }
+    public class CustomOnItemSelectedListenerDiametros implements OnItemSelectedListener {
+
+        public void onItemSelected(AdapterView<?> parent, View view, int pos,long id) {
+            flagDiametros++;
+            if (flagDiametros!=1){
+                Toast.makeText(parent.getContext(),"Διάμετρος σωλήνας : " + parent.getItemAtPosition(pos).toString(),
+                        Toast.LENGTH_SHORT).show();
+                report_diametros_string = parent.getItemAtPosition(pos).toString();
+                EditText report_diametros_text = (EditText) findViewById(R.id.editTextReportDiametros1);
+                report_diametros_text.setText(parent.getItemAtPosition(pos).toString());
+            }
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> arg0) {
+            // TODO Auto-generated method stub
+
+        }
+
+    }
+    //spinner type
+    public void addItemsOnSpinnerType() {
+
+        spinnerType = (Spinner) findViewById(R.id.spinnerType);
+        List<String> listType = new ArrayList<String>();
+        listType.add("UPVC");
+        listType.add("HPPE");
+        listType.add("GI");
+        listType.add("Steel");
+        listType.add("DI");
+        listType.add("MDPE μαύρος");
+        listType.add("HDPE");
+        listType.add("UPVC");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listType);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerType.setAdapter(dataAdapter);
+    }
+    public class CustomOnItemSelectedListenerType implements OnItemSelectedListener {
+
+        public void onItemSelected(AdapterView<?> parent, View view, int pos,long id) {
+            flagType++;
+            if (flagType!=1){
+                Toast.makeText(parent.getContext(),"Είδος σωλήνας : " + parent.getItemAtPosition(pos).toString(),
+                        Toast.LENGTH_SHORT).show();
+                report_type_string = parent.getItemAtPosition(pos).toString();
+                EditText report_type_text = (EditText) findViewById(R.id.editTextReportType1);
+                report_type_text.setText(parent.getItemAtPosition(pos).toString());
+            }
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> arg0) {
+            // TODO Auto-generated method stub
+
+        }
+
+    }
+    //spinner damage
+    public void addItemsOnSpinnerDamage() {
+
+        spinnerDamage = (Spinner) findViewById(R.id.spinnerDamage);
+        List<String> listDamage = new ArrayList<String>();
+        listDamage.add("Φθορά διακόπτη πεζοδρομίου");
+        listDamage.add("Ρίζες δέντρου");
+        listDamage.add("Φθορά σαλαμάστρας");
+        listDamage.add("Φθορά μπουλωνιών");
+        listDamage.add("Μπουλώνια φλάντζας");
+        listDamage.add("Οξείδωση");
+        listDamage.add("Διαμήκης θραύση σωλήνα");
+        listDamage.add("Θραύση ένωσης - στο φερούλι");
+        listDamage.add("Θραύση ένωσης - στο διακόπτη");
+        listDamage.add("Θραύση ένωσης - σε εξάρτημα");
+        listDamage.add("Φθορά φερουλιού");
+        listDamage.add("Σέλλα - λάστιχο Ο Ring");
+        listDamage.add("Φθορά διακόπτη σέλλας");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listDamage);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerDamage.setAdapter(dataAdapter);
+    }
+    public class CustomOnItemSelectedListenerDamage implements OnItemSelectedListener {
+
+        public void onItemSelected(AdapterView<?> parent, View view, int pos,long id) {
+            flagDamage++;
+            if (flagDamage!=1){
+                Toast.makeText(parent.getContext(),"Ζημιά : " + parent.getItemAtPosition(pos).toString(),
+                        Toast.LENGTH_SHORT).show();
+                report_damage_string = parent.getItemAtPosition(pos).toString();
+                EditText report_damage_text = (EditText) findViewById(R.id.editTextReportDamage1);
+                report_damage_text.setText(parent.getItemAtPosition(pos).toString());
+            }
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> arg0) {
+            // TODO Auto-generated method stub
+
+        }
+
+    }
+
 }

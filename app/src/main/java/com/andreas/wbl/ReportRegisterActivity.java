@@ -85,6 +85,6 @@ public class ReportRegisterActivity extends AppCompatActivity {
                 Log.d("TAG", response.body().string());
             }
         });
-        Toast.makeText(getApplicationContext(),"Registration Sent...",Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),"Εγγραφή ολοκληρώθηκε...",Toast.LENGTH_LONG).show();
     }
 }
