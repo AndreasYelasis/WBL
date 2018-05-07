@@ -1,5 +1,7 @@
 package com.andreas.wbl;
 
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,14 +16,19 @@ import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -38,8 +45,14 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class ModificationActivity extends AppCompatActivity {
@@ -51,6 +64,7 @@ public class ModificationActivity extends AppCompatActivity {
     private Bitmap bitmap;
     private File file;
     private Uri file_uri;
+    private Spinner spinnerThema;
 
     String report_id_string="";
     String report_area_string="";
@@ -74,7 +88,6 @@ public class ModificationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_modification);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,26 +119,47 @@ public class ModificationActivity extends AppCompatActivity {
         EditText report_timestamp_taken_text = (EditText) findViewById(R.id.editTextReportTimeStampTaken);
         EditText report_phone_text = (EditText) findViewById(R.id.editTextReportPhone);
         EditText report_synergio_text = (EditText) findViewById(R.id.editTextReportSynergio);
+        EditText report_thema_text = (EditText) findViewById(R.id.editTextReportThema1);
+        EditText report_reason_text = (EditText) findViewById(R.id.editTextReportReason1);
+        EditText report_action_text = (EditText) findViewById(R.id.editTextReportAction1);
+        EditText report_diametros_text = (EditText) findViewById(R.id.editTextReportDiametros1);
+        EditText report_type_text = (EditText) findViewById(R.id.editTextReportType1);
+        EditText report_damage_text = (EditText) findViewById(R.id.editTextReportDamage1);
+        EditText report_vathos_text = (EditText) findViewById(R.id.editTextReportVathos1);
 
-        Toast.makeText(getApplicationContext(), "From Intent", Toast.LENGTH_LONG).show();
-            report_id_string = reportinfo.getString("report_id")+"";
-            report_area_string = reportinfo.getString("area")+"";
-            report_address_string = reportinfo.getString("address")+"";
-            report_zip_code_string = reportinfo.getString("zip_code")+"";
-            report_customer_string = reportinfo.getString("customer_name")+"";
-            report_timestamp_taken_string = reportinfo.getString("timestamp_taken")+"";
-            report_phone_string = reportinfo.getString("phone")+"";
-            report_synergio_string = reportinfo.getString("synergio")+"";
-            //emfanisi tou minimatos sta EditText
-            report_id_text.setText(reportinfo.getString("report_id"));
-            report_area_text.setText(reportinfo.getString("area"));
-            report_address_text.setText(reportinfo.getString("address"));
-            report_zip_code_text.setText(reportinfo.getString("zip_code"));
-            report_customer_name_text.setText(reportinfo.getString("customer_name"));
-            report_timestamp_taken_text.setText(reportinfo.getString("timestamp_taken"));
-            report_phone_text.setText(reportinfo.getString("phone"));
-            report_synergio_text.setText(reportinfo.getString("synergio"));
+        report_id_string = reportinfo.getString("report_id")+"";
+        report_area_string = reportinfo.getString("area")+"";
+        report_address_string = reportinfo.getString("address")+"";
+        report_zip_code_string = reportinfo.getString("zip_code")+"";
+        report_customer_string = reportinfo.getString("customer_name")+"";
+        report_timestamp_taken_string = reportinfo.getString("timestamp_taken")+"";
+        report_phone_string = reportinfo.getString("phone")+"";
+        report_synergio_string = reportinfo.getString("synergio")+"";
+        report_thema_string = reportinfo.getString("thema")+"";
+        report_reason_string = reportinfo.getString("reason")+"";
+        report_action_string = reportinfo.getString("action")+"";
+        report_diametros_string = reportinfo.getString("diametros")+"";
+        report_type_string = reportinfo.getString("type")+"";
+        report_damage_string = reportinfo.getString("damage")+"";
+        report_vathos_string = reportinfo.getString("vathos")+"";
+        //emfanisi tou minimatos sta EditText
+        report_id_text.setText(reportinfo.getString("report_id"));
+        report_area_text.setText(reportinfo.getString("area"));
+        report_address_text.setText(reportinfo.getString("address"));
+        report_zip_code_text.setText(reportinfo.getString("zip_code"));
+        report_customer_name_text.setText(reportinfo.getString("customer_name"));
+        report_timestamp_taken_text.setText(reportinfo.getString("timestamp_taken"));
+        report_phone_text.setText(reportinfo.getString("phone"));
+        report_synergio_text.setText(reportinfo.getString("synergio"));
+        report_thema_text.setText(reportinfo.getString("thema"));
+        report_reason_text.setText(reportinfo.getString("reason"));
+        report_action_text.setText(reportinfo.getString("action"));
+        report_diametros_text.setText(reportinfo.getString("diametros"));
+        report_type_text.setText(reportinfo.getString("type"));
+        report_damage_text.setText(reportinfo.getString("damage"));
+        report_vathos_text.setText(reportinfo.getString("vathos"));
 
+        addItemsOnSpinnerThema();
     }//end of onCreate
 
     public void postUpdatedReportToDB(View view) throws IOException {
@@ -216,6 +250,14 @@ public class ModificationActivity extends AppCompatActivity {
             }
         });
         Toast.makeText(getApplicationContext(),"Update Sent...",Toast.LENGTH_LONG).show();
+
+        spinnerThema = (Spinner) findViewById(R.id.spinnerThema);
+
+
+        Toast.makeText(ModificationActivity.this,
+                      "OnClickListener : " + "\nSpinner Thema : " + String.valueOf(spinnerThema.getSelectedItem()),
+        Toast.LENGTH_SHORT).show();
+
     }
 //σταρτ
     private void getFileUri() {
@@ -288,4 +330,31 @@ public class ModificationActivity extends AppCompatActivity {
         requestQueue.add(request);
     }
     //φινιση
+    //add items into spinner dynamically
+    //spinner Thema
+    public void addItemsOnSpinnerThema() {
+
+        spinnerThema = (Spinner) findViewById(R.id.spinnerThema);
+        List<String> list = new ArrayList<String>();
+        list.add("Διαρροή νερού στο υποστατικό");
+        list.add("Διαρροή νερού από δίκτυο");
+        list.add("Αφανής διαρροή");
+        list.add("Δεν έχει νερό");
+        list.add("Χαμηλή Πίεση");
+        list.add("Ψηλή Πίεση");
+        list.add("Ποιότητα νερού");
+        list.add("Σπατάλη νερού");
+        list.add("Σπασμένος Υδρομετρητής");
+        list.add("Δυσκολία Καταγραφής Υδρομετρητή");
+        list.add("Διάφορα");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerThema.setAdapter(dataAdapter);
+    }
+    spinnerThema.OnItemSelectedListener(this);
+    public void onItemSelected(AdapterView<?> parent, View view, int pos,long id) {
+        Toast.makeText(parent.getContext(),
+                "OnItemSelectedListener : " + parent.getItemAtPosition(pos).toString(),
+                Toast.LENGTH_SHORT).show();
+    }
 }

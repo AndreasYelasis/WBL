@@ -121,6 +121,13 @@ public class ReportsAdapter extends RecyclerView.Adapter<ReportsAdapter.ViewHold
                     reportinfo.putString("timestamp_taken",reports.get(pos).getTimestampTaken()+"");
                     reportinfo.putString("phone",reports.get(pos).getPhone()+"");
                     reportinfo.putString("synergio",reports.get(pos).getSynergio());
+                    reportinfo.putString("thema",reports.get(pos).getThema());
+                    reportinfo.putString("reason",reports.get(pos).getReason());
+                    reportinfo.putString("action",reports.get(pos).getAction());
+                    reportinfo.putString("diametros",reports.get(pos).getDiametros());
+                    reportinfo.putString("type",reports.get(pos).getType());
+                    reportinfo.putString("damage",reports.get(pos).getDamage());
+                    reportinfo.putString("vathos",reports.get(pos).getVathos()+"");
                     modificationIntent.putExtras(reportinfo);
                     context.startActivity(modificationIntent);
                     return true;

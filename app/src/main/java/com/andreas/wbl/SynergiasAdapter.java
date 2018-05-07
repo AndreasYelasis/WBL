@@ -37,7 +37,7 @@ public class SynergiasAdapter extends RecyclerView.Adapter<SynergiasAdapter.View
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
 
-        holder.synergiaName.setText(synergias.get(position).getSynergiaName());
+        holder.synergiaName.setText(synergias.get(position).getSynergioName());
 //        holder.checkBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 //            @Override
 //            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -98,10 +98,10 @@ public class SynergiasAdapter extends RecyclerView.Adapter<SynergiasAdapter.View
         public boolean onMenuItemClick(MenuItem menuItem) {
             switch (menuItem.getItemId()) {
                 case R.id.action_complete:
-                    Toast.makeText(context, synergias.get(pos).getSynergiaName()+" history", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, synergias.get(pos).getSynergioName()+" history", Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.action_map:
-                    Toast.makeText(context, "Delete "+synergias.get(pos).getSynergiaName(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Delete "+synergias.get(pos).getSynergioName(), Toast.LENGTH_SHORT).show();
                     return true;
                 default:
             }

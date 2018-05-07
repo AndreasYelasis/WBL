@@ -8,13 +8,13 @@ public class Synergia {
 
     //fields
     private int id;
-    private String synergiaName;
+    private String synergioName;
     //private boolean epistatis;
 
     //default constructor
-    public Synergia(int id, String synergiaName) {
+    public Synergia(int id, String synergioName) {
         this.id = id;
-        this.synergiaName = synergiaName;
+        this.synergioName = synergioName;
         //this.epistatis = epistatis;
     }
 
@@ -27,12 +27,12 @@ public class Synergia {
         this.id = id;
     }
 
-    public String getSynergiaName() {
-        return synergiaName;
+    public String getSynergioName() {
+        return synergioName;
     }
 
-    public void setSynergiaName(String synergiaName) {
-        this.synergiaName = synergiaName;
+    public void setSynergioName(String synergioName) {
+        this.synergioName = synergioName;
     }
 
 //    public boolean getEpistatis(){
