@@ -132,7 +132,7 @@ public class ReportsAdapter extends RecyclerView.Adapter<ReportsAdapter.ViewHold
                     context.startActivity(modificationIntent);
                     return true;
                 case R.id.action_map:
-                    Toast.makeText(context, "Delete "+reports.get(pos).getReportId(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Record "+reports.get(pos).getReportId(), Toast.LENGTH_SHORT).show();
                     Intent mapIntent = new Intent(context, MapsActivity.class);
                     Bundle mapinfo = new Bundle();
                     mapinfo.putString("address",reports.get(pos).getAddress());

@@ -472,11 +472,11 @@ public class ModificationActivity extends AppCompatActivity {
 
         spinnerDiametros = (Spinner) findViewById(R.id.spinnerDiametros);
         List<String> listDiametros = new ArrayList<String>();
-        listDiametros.add("2 ίντζεσ");
-        listDiametros.add("3 ίντζεσ");
-        listDiametros.add("4 ίντζεσ");
-        listDiametros.add("6 ίντζεσ");
-        listDiametros.add("8 ίντζεσ");
+        listDiametros.add("2 ίντζες");
+        listDiametros.add("3 ίντζες");
+        listDiametros.add("4 ίντζες");
+        listDiametros.add("6 ίντζες");
+        listDiametros.add("8 ίντζες");
         listDiametros.add("63mm");
         listDiametros.add("90mm");
         listDiametros.add("125mm");
