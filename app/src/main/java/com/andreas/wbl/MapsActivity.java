@@ -32,6 +32,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private GPSTracker gps;
+    private String location;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,13 +62,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             Toast.makeText(getApplicationContext(), "Οι Συντεταγμένες δεν έχουν καταχωριθεί\nΕνεργοποιήστε τον αισθητηρα τοποθεσείας", Toast.LENGTH_LONG).show();
             gps.showSettingsAlert();
         }
-
-    }
-
-    public void onMapSearch(View view) {
-
         EditText locationSearch = (EditText) findViewById(R.id.editTextSearchAddress);
-        String location;
+        //String location;
         Intent mapIntent = getIntent();
         Bundle mapinfo = mapIntent.getExtras();
         if (locationSearch.getText().toString().equals("")){//An den exei kati grammeno o xristis tote pianei tin odo apo to intent
@@ -75,6 +71,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             locationSearch.setText(mapinfo.getString("address")+" "+mapinfo.getString("area"));}
         else
             location = locationSearch.getText().toString();
+
+
+    }
+
+    public void onMapSearch(View view) {
+
 
         if(isNetworkAvailable()){
         List<Address> addressList = null;
