@@ -77,7 +77,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public void onMapSearch(View view) {
 
-
+        EditText locationSearch = (EditText) findViewById(R.id.editTextSearchAddress);
+        location = locationSearch.getText().toString();
         if(isNetworkAvailable()){
         List<Address> addressList = null;
             Geocoder geocoder = new Geocoder(this);
@@ -108,14 +109,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         // Add a marker in Symvoulio Ydatopromithias Lemesou and move the camera
-        LatLng wbl = new LatLng(34.6688003, 33.0263837);
-        mMap.addMarker(new MarkerOptions().position(wbl).title("Συμβούλιο Υδατοπρομήθειας Λεμεσού"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(wbl, 10));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(wbl));
+        //LatLng wbl = new LatLng(34.6688003, 33.0263837);
+        //mMap.addMarker(new MarkerOptions().position(wbl).title("Συμβούλιο Υδατοπρομήθειας Λεμεσού"));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(wbl, 10));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(wbl));
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
         mMap.setMyLocationEnabled(true);
+        if(isNetworkAvailable()){
+            List<Address> addressList = null;
+            Geocoder geocoder = new Geocoder(this);
+            try {
+                addressList = geocoder.getFromLocationName(location, 1);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Address address = addressList.get(0);
+            LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
+            mMap.addMarker(new MarkerOptions().position(latLng).title("Προορισμός"));
+            mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+        }
+        else
+            Toast.makeText(this,"No internet Access",Toast.LENGTH_LONG).show();
     }
 
     public void showMapTypeSelectorDialog(View view) {
