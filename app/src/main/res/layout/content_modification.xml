@@ -455,7 +455,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/editTextReportCompleted1"
-            android:text="Αποθήκευση πληρωφοριών και συντεταγμένων" />
+            android:text="Αποθήκευση πληροφοριών και συντεταγμένων" />
 
     </LinearLayout>
 </ScrollView>
