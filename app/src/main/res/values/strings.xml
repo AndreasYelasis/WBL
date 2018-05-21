@@ -15,4 +15,19 @@
     <string name="title_activity_report_register">Εγγραφή Περιστατικού</string>
     <string name="title_activity_modification">Μορφοποίηση Αναφοράς</string>
     <string name="title_activity_report_update">Ανανέωση Αναφοράς</string>
+    <string name="title_activity_login">Water Board Limassol</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Αριθμός Υπαλλήλου</string>
+    <string name="prompt_password">Κωδικός</string>
+    <string name="action_sign_in">Εισαγωγη</string>
+    <string name="action_sign_in_short">Εισαγωγή</string>
+    <string name="error_invalid_email">Λάθος Αρ. Υπαλλήλου</string>
+    <string name="error_invalid_password">Μικρός κωδικός</string>
+    <string name="error_incorrect_password">Ο κωδικός είναι λάθος</string>
+    <string name="error_field_required">Αυτό το πεδίο απαιτείται</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="title_activity_splash">SplashActivity</string>
 </resources>
