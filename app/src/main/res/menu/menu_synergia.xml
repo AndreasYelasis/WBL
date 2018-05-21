@@ -6,5 +6,5 @@
         android:title="Ιστορικό" />
     <item
         android:id="@+id/action_map"
-        android:title="Πληροφωρίες" />
+        android:title="Εργατοώρες" />
 </menu>
