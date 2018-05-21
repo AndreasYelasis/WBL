@@ -67,19 +67,13 @@ public class SynergiaActivity extends AppCompatActivity {
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-//        final Button buttonShowCust = (Button) findViewById(R.id.buttonShowCust);
-//        //final Button buttonSearchCust = (Button) findViewById(R.id.buttonSynergiaSearch);
-//        buttonShowCust.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                Toast.makeText(SynergiaActivity.this, "Show",Toast.LENGTH_LONG).show();
-//                url="http://DESKTOP-796HOHI/wbl_get_synergias.php?id=";
-//            }
-//        });
-//        buttonSearchCust.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                Toast.makeText(SynergiaActivity.this, "Search",Toast.LENGTH_LONG).show();
-//            }
-//        });
+        final Button buttonSynergiaSearch = (Button) findViewById(R.id.buttonSynergiaSearch);
+
+        buttonSynergiaSearch.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Toast.makeText(SynergiaActivity.this, "Search",Toast.LENGTH_LONG).show();
+            }
+        });
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         synergias = new ArrayList<>();
@@ -102,83 +96,6 @@ public class SynergiaActivity extends AppCompatActivity {
         });
 
     }
-
-//    public void registerSynergia(View view){
-//        Intent intent = new Intent(this, SynergiaRegisterActivity.class);
-//        startActivity(intent);
-//    }
-
-//    private void searchSynergiasFromDB( int id ) {
-//        {
-//            EditText search_idcard_text = (EditText)findViewById(R.id.editTextIdSearch);
-//            final String search_idcard_string = search_idcard_text.getText().toString();
-//            AsyncTask<Integer, Void, Void> asyncTask = new AsyncTask<Integer, Void, Void>() {
-//                @Override
-//                protected Void doInBackground(Integer... synergiaIds) {
-//                    ////
-//                    OkHttpClient client = new OkHttpClient();
-//
-//                    RequestBody formBody = new FormBody.Builder()
-//                            .add("idcard",search_idcard_string)
-//                            .build();
-//
-//                    Request request = new Request.Builder()
-//                            .url("http://DESKTOP-796HOHI/wbl_search_synergias.php?id=")
-//                            .post(formBody)
-//                            .build();
-//
-//                    client.newCall(request).enqueue(new Callback() {
-//                        @Override
-//                        public void onFailure(Call call, IOException e) {
-//                            call.cancel();
-//                        }
-//
-//                        @Override
-//                        public void onResponse(Call call, Response response) throws IOException {
-//
-//                            Log.d("TAG", response.body().string());
-//                        }
-//                    });
-                    ////
-
-//                    try {
-//                        Response response = client.newCall(request).execute();
-//
-//                        JSONArray array = new JSONArray(response.body().string());
-//
-//                        for (int i = 0; i < array.length(); i++) {
-//
-//                            JSONObject object = array.getJSONObject(i);
-//
-//                            Synergia synergia = new Synergia(
-//                                    object.getInt("id"),
-//                                    object.getString("synergia_name"),
-//                                    object.getString("synergia_surname"),
-//                                    object.getInt("synergia_id_card"),
-//                                    object.getInt("synergia_birthdate"),
-//                                    object.getString("synergia_address"),
-//                                    object.getInt("synergia_zip_code"));
-//
-//                            SynergiaActivity.this.synergias.add(synergia);
-//                        }
-//
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//                    return null;
-//                }
-//
-//                @Override
-//                protected void onPostExecute(Void aVoid) {
-//                    adapter.notifyDataSetChanged();
-//                }
-//            };
-//
-//            asyncTask.execute(id);
-//        }
-//    }
 
     private void getSynergiasFromDB(int id ) {
         //AsyncTask enables proper and easy use of the UI thread.

@@ -18,35 +18,18 @@
         android:layout_alignParentTop="true"
         android:ems="10"
         android:inputType="number"
-        android:hint="Ταυτότητα" />
+        android:hint="Αρ. Υπαλλήλου"
+        android:layout_toLeftOf="@+id/buttonSynergiaSearch"
+        android:layout_toStartOf="@+id/buttonSynergiaSearch" />
 
     <Button
         android:id="@+id/buttonSynergiaSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Αναζητηση"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/editTextIdSearch"
-        android:layout_toRightOf="@+id/editTextIdSearch"
-        android:text="Αναζητηση" />
-
-    <Button
-        android:onClick="registerSynergia"
-        android:id="@+id/buttonSynergiaRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/editTextIdSearch"
-        android:text="Εγγραφη Πελατη" />
-
-    <Button
-        android:id="@+id/buttonShowCust"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="εμφανιση ολων"
-        android:layout_below="@+id/buttonSynergiaSearch"
-        android:layout_alignLeft="@+id/buttonSynergiaSearch"
-        android:layout_alignStart="@+id/buttonSynergiaSearch" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview"
@@ -58,5 +41,5 @@
         android:scrollbars="vertical"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_below="@+id/buttonShowCust" />
+        android:layout_below="@+id/buttonSynergiaSearch" />
 </RelativeLayout>

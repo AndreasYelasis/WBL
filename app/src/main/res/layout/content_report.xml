@@ -18,7 +18,7 @@
         android:layout_alignParentTop="true"
         android:ems="10"
         android:inputType="number"
-        android:hint="Αριθμος Αναφοράς"> <requestFocus /></EditText>
+        android:hint="Αριθμός Αναφοράς"> <requestFocus /></EditText>
 
     <Button
         android:id="@+id/buttonReportSearch"
@@ -34,7 +34,7 @@
         android:id="@+id/buttonUncompletedReport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ατέλιωτα Περιστατικά"
+        android:text="Ατελη Περιστατικα"
         android:layout_above="@+id/recyclerview"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
